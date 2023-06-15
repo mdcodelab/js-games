@@ -86,8 +86,3 @@ btnCloseNew.addEventListener("click", ()=> {
     playerOneTotal.textContent=0;
     playerTwoTotal.textContent=0;
 })
-
-
-
-
-
