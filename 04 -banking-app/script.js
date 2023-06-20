@@ -210,7 +210,45 @@ const updateUI=function(account) {
 calcPrintBalance(account);
 calcDisplaySummary(account);
 display(account, account.movements);
+//date on current account
+labelDate.textContent=`${new Date().toLocaleString()}`
 }
+
+
+const startLogout = () => {
+  let time = 120;
+  let minute = Math.floor(time / 60);
+  let second = time % 60;
+
+  // Display the initial remaining time in UI
+  labelTimer.textContent = `You have ${minute}:${second}`;
+  console.log(`You have ${minute}:${second}`)
+  // Call the timer every second
+  const timer = setInterval(() => {
+    time = time - 1;
+    minute = Math.floor(time / 60);
+    second = time % 60;
+
+    // Update the remaining time displayed in UI
+    labelTimer.textContent = `You have ${minute}:${second}`;
+
+    // Check if the time has expired and perform the logout action
+    if (time === 0) {
+      clearInterval(timer);
+      // Perform the logout action here
+    }
+  }, 1000);
+};
+
+// Call the startLogout function to begin the timer
+startLogout();
+
+
+// Call the startLogout function to begin the timer
+startLogout();
+
+
+
 
 //login functionality
 let currentAccount=null;
@@ -318,3 +356,6 @@ if(amount > 0 && currentAccount.movements.some(mov=> mov >= amount*0.1)) {
  }
  inputLoanAmount.value="";
 })
+
+
+//////////////
