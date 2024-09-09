@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = "Mihaela".toLowerCase();  // Convert string to lowercase to handle case insensitivity
+const obj = {};
+
+function makeObj() {
+    // Create frequency map
+    for (let i = 0; i < str.length; i++) {
+        const char = str[i];  // Get the current character
+        if (char in obj) {
+            obj[char] += 1;  // Increment if character exists in the object
+        } else {
+            obj[char] = 1;   // Initialize with 1 if it doesn't exist
+        }
+    }
+    return obj;
+}
+
+console.log("Character Frequency Map:", makeObj()); // Log the character frequency map
+
+let myObj = makeObj();  // Frequency object
+let maxCount = 0;       // Initialize maxCount to track highest frequency
+let maxChar = '';       // Variable to store the most frequent character
+
+function maxKeyDetermine() {
+    // Loop through the frequency map
+    for (let key in myObj) {                       //ATENTIE! - in
+        if (myObj[key] > maxCount) {  // If the current character's count is higher than maxCount
+            maxCount = myObj[key];    // Update maxCount
+            maxChar = key;            // Update maxChar with the current character
+        }
+    }
+    return {character: maxChar, amount: maxCount}// Return the character with the highest count
+}
+
+console.log("Most common character:", maxKeyDetermine());  // "a"
+
+    </script>
+</body>
+</html>
