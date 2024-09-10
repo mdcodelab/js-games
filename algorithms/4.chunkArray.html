@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //Given an array and chunk size, divide the array into many sub-arrays
+    //where each sub-array is of length size.
+    //[[1, 2, 3, 4], 2] -> [[1, 2], [3, 4]];
+    //[1, 2, 3, 4, 5], 2] -> [[1, 2], [3, 4], [5]];
+    //[[1, 2, 3, 4, 5, 6, 7 ,8], 3] ->[[1, 2, 3], [4, 5, 6], [7, 8]];
+    //[[1, 2, 3, 4, 5], 4] -> [[1, 2], [3], [4], [5]]
+
+
+
+    const result=[];
+    let index=0;
+
+     function chunkArray (array, size) {
+        while(index < array.length) {
+            result.push(array.slice(index, index+size));
+            index=index+size;
+        }
+        return result;
+    }
+    console.log(chunkArray([1, 2, 3, 4], 2))
+    
+    </script>
+    
+</body>
+</html>
