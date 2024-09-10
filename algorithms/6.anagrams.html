@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //An anagram is a word or phrase formed by rearranging the letters 
+        //of another word or phrase, using all the original letters exactly once. For example:
+        //"mare" and "ream" are anagrams.
+        //"listen" and "silent" are anagrams.
+    //"dormitory" and "dirty room" are anagrams.
+        
+    function findAnagram (str_1, str_2) {
+        let myStr_1 = str_1.toLowerCase();
+        let myStr_2=str_2.toLowerCase();
+
+        if(myStr_1.length !==myStr_2.length) {
+            return false;
+        }
+        let sortStr_1 = myStr_1.split("").sort().join("");
+        let sortStr_2 = myStr_2.split("").sort().join("");
+        if(sortStr_1 === sortStr_2) {
+            return true;
+        } else {
+            return false
+        }
+
+
+    }
+
+    console.log(findAnagram("mare", "ream")); //true
+
+    </script>
+</body>
+</html>
