@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Write a function that counts the number of vowels
+        let count=0;
+        function numberVowels (str) {
+            let myArr = str.toLowerCase().split("");
+           for (let i=0; i<myArr.length; i++) {
+            if(myArr[i] === "a" || myArr[i] == "e" || myArr[i] == "i" || myArr[i] === "o" 
+           || myArr[i] ==="u" || myArr[i] === "y" || myArr[i] === "w") {
+            count=count+1
+            }
+           } 
+           return count;
+        }
+
+        console.log(numberVowels("Mihaela")); //4
+
+    </script>
+</body>
+</html>
