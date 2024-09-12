@@ -22,6 +22,30 @@
 
         console.log(numberVowels("Mihaela")); //4
 
+        //solution 2
+        function vowelsInString(str) {
+            const matches=str.match(/[aeiouyw]/gi);
+            return matches ? matches.length : 0
+        }
+
+        console.log(vowelsInString("mihaela"));
+
+        //solution 3
+        function getVowels (str) {
+        let vowels = ["a", "e", "i", "o", "u"];
+
+            let myArr = str.split("");
+            let count=0;
+            for(let char of str.toLowerCase()) {
+                if(vowels.includes(char)) {
+                    count += 1;
+                }
+            }
+            return count;
+        }
+
+        console.log(getVowels("mihaela"))
+
     </script>
 </body>
 </html>
