@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Write a function that accepts a positive number N.
+        // The function should console.log the step shape with N levels
+        //using # character. Make sure the step has spaced on the right hand side.
+
+        //the total length must be N
+        //first row - N-1 spaces 
+        //second row - N-2 spaces
+        //etc.
+
+        //solution 1
+        function positiveNumbers (N) {
+            let step="#";
+            for(let i =1; i<=N; i++) {
+                console.log(`${step.repeat(i)} ${i}`);
+            }
+        }
+
+        positiveNumbers(10);
+
+        //solution 2
+
+        function step (N) {
+            let myStr = "";
+            for(let i = 1; i<=N; i++) {
+                myStr = myStr + "#";
+                console.log(`This is the second solution: ${myStr} ${i}`)
+            }
+        }
+
+        step(5);
+            
+
+
+    </script>
+</body>
+</html>
