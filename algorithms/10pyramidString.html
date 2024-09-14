@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyramid</title>
+</head>
+<body>
+    <script>
+        // Function to generate a pyramid with N levels
+        function myPyramid(N) {
+            let myStr = "";
+            for(let i = 1; i <= N; i++) {
+                // Add spaces before and after the hashes
+                myStr = `${" ".repeat(N-i){"#".repeat(i)}}`
+                console.log(myStr);
+            }
+        }
+
+        myPyramid(5); // Adjust N as needed
+    </script>
+</body>
+</html>
