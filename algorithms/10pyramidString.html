@@ -8,16 +8,30 @@
 <body>
     <script>
         // Function to generate a pyramid with N levels
-        function myPyramid(N) {
-            let myStr = "";
-            for(let i = 1; i <= N; i++) {
-                // Add spaces before and after the hashes
-                myStr = `${" ".repeat(N-i){"#".repeat(i)}}`
+        //function myPyramid(N) {
+        //     let myStr = "";
+        //     for(let i = 1; i <= N; i++) {
+        //         // Add spaces before and after the hashes
+        //         myStr = `${" ".repeat(N-i)}${"#".repeat((i))}${" ".repeat(N-i)}`
+        //         console.log(myStr);
+        //     }
+        // }
+
+        // myPyramid(3); 
+
+        //solution 2
+
+        function pyramid (N) {
+            let myStr;
+            for (let i=1; i<=N; i++) {
+                myStr =`${" ".repeat(N-i+1)}${"#".repeat(2*i-1)}${" ".repeat(N-i+1)}`;
                 console.log(myStr);
             }
         }
 
-        myPyramid(5); // Adjust N as needed
+        pyramid(10);
+
+
     </script>
 </body>
 </html>
