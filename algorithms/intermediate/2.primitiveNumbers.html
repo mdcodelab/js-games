@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //write a function that return the sum of prime numbers up to 
+        //a certain primitive number. A prime number is a whole number that 
+        //divides by 1 and by itself.
+
+        function primeNum(n) {
+            if(n < 2) return false;
+            for(let i = 2; i <= Math.sqrt(n); i++) {
+                if(n % i === 0) return false;
+            }
+            return true;
+        }
+
+        function sumPrimitives(n) {
+        let count=0;
+        for(let i = 1; i <=n; i++) {
+            if(primeNum(i)) {
+                count += i;
+            }
+
+    }  
+    return count;
+} 
+
+console.log(sumPrimitives(20))
+
+    </script>
+</body>
+</html>
