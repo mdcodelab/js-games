@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //write a function that takes 2 or mora arrays and returns
+        // a new array of unique values in the order of original provided arrays.
+
+        function myArs(arr1, arr2) {
+            //merge arrays
+            let merged= [...arr1, ...arr2];
+            let finalArray = merged.filter((item, index)=> merged.indexOf(item) === index);
+            return finalArray;
+        }
+
+        console.log(myArs([2, 3, 4, 5], [4, 5, 6]));
+    </script>
+</body>
+</html>
