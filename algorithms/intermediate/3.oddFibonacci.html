@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Given the integer num, return sum of all of Fibonacci numbers 
+        //that are less than or equal to num.
+        //Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89
+
+        function fibonacciSum(num) {
+        //initialize Fibonacci series
+        let a = 0;
+        let b=1
+        //initialize sum ofFibonacci numbers
+        let sum =0;
+        while(a<=num) {  //current Fibo nr. tat will be added to the sum at each iteration
+            sum=sum+a; // add the fist Fibonacci nr. to the sum
+            let next = a+b; //calculate the next Fibonacci nr.
+            //the next series of 2 numbers: a & b:
+            a=b;
+            b=next;
+        }
+        return sum;
+
+        }
+
+        console.log(fibonacciSum(10));
+
+
+        //return Fibonacci numbers up to num
+        function fiboNums(num) {
+            let a=0; //current nr.
+            let b=1;
+            let nextTerm;
+            while(a<=num) {
+                console.log(a);
+                nextTerm = a + b;
+                a = b;
+                b = nextTerm;
+            }
+        }
+
+        fiboNums(10);
+        
+    </script>
+</body>
+</html>
