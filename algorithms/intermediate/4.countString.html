@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //count each character in a string
+
+        function myStr(str) {
+            let myObj={};
+            for(let char of str.toLowerCase()) {
+
+                // if(myObj[char]) {
+                //     myObj[char]++;
+                // } else {
+                //     myObj[char]=1; 
+                // }
+
+                //or replace with this line:
+                myObj[char]=myObj[char]++ || 1;
+            }
+            return myObj;
+    
+        }
+    
+
+    
+
+    console.log(myStr("Mihaela"))
+
+        
+
+    </script>
+</body>
+</html>

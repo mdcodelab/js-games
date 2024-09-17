@@ -1,0 +1,69 @@
+1
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //uses objects or sets to count values. It avoids O(n squared) - it's usually O(n).
+
+        //A function accepts 2 array. It returns true if every value in the array has it's corresponding
+        //squared value in the second array. FREQUENCY OF VALUES MUST BE THE SAME. (nr. of appearences).
+        //[1, 3, 2] ->[1, 9, 4] true
+        //[1, 2, 3] ->[9, 4, 1] true
+
+        function compare_1 (arr1, arr2) {
+            if(arr1.length !==arr2.length) {
+                return false;
+            }
+
+            for(let i of arr1) {
+                if(arr1[i] === arr2[i]^2) {
+                    return true
+                } else {return false}
+            }
+
+        }
+        console.log(compare_1([1,2,3], [1,9, 4])) // true
+
+
+        /////////////////solution 2
+        function compare_2 (arr1, arr2) {
+            if(arr1.length!==arr2.length) {
+                return false;
+            }
+
+            let obj1 = {};
+            let obj2 = {};
+            //populate obj1 with elements of the arr1
+            for(let i of arr1) {
+                //obj1[i] = (obj1[i] || 0) + 1; or
+                if(obj1[i]) obj1[i]=obj1[i]+1;
+                else obj1[i];
+             }
+
+            //populate obj2 with elements of the arr2
+            for(let i of arr2) {
+                obj2[i] = (obj2[i] || 0) + 1;
+            }
+
+            for(let key in obj1) {
+                if(obj1[key]!==obj2[key**2]) {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        console.log(compare_2([1,2,3], [1,9, 4])) // true
+
+
+
+
+
+    </script>
+</body>
+</html>
