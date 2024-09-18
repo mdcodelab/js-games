@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //Examples:
+    //Write a function that accepts a string and returns the longest number of unique sequences";
+    //Calculate max subarray sum (max sum of 2, 3...digits from one another);
+    //For that, you can make a window (subarray, substring)
+
+    //Problem 1. Find the max sum of subarray of numbers [1, 3, 5, 7, 1, 19], 3  (sum of 3 consecutive numbers)
+
+    function maxSum (arr) {
+        let maxSum=0;
+        let currentSum=0;
+        for(let j=0; j<arr.length-3; j++) {
+        currentSum=arr[j]+arr[j+1]+arr[j+2];
+        if (currentSum >maxSum) {
+            maxSum=currentSum;
+        }
+        }
+        return maxSum;
+    }
+    console.log(maxSum([1, 19, 2, 26, 3, 4, 10, 12, 10])); //47
+
+    //Function that capitalize the first letter of each word.
+    function capString(str) {
+        str=str.toLowerCase();
+        str=str.split(" ")
+        for (let i=0; i<str.length; i++) {
+            str[i]=str[i].charAt(0).toUpperCase()+str[i].slice(i)
+        }
+        return str.join(" ");
+    }
+
+    console.log(capString("hello world"));//Hello World
+
+    
+    </script>
+</body>
+</html>
