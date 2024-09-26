@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function countDown(num){
+            if(num <=0) {
+                console.log("All done!");
+                return;
+            }
+            console.log(num);
+            num--;
+            countDown(num);
+        }
+
+        console.log(countDown(7)); //7, 6, 5, 4, 3, 2, 1
+
+        function count (num) {
+            for(let i=num; i>0; i--) {
+                console.log(i);
+            }
+            return alert("All done!");
+        }
+
+        console.log(count(5));
+
+        //EXAMPLE 2
+        function numSum(num) {
+            if(num ===1) return 1;
+            return num * numSum(num-1);
+        }
+
+        console.log("The result is:", numSum(3));
+
+    </script>
+</body>
+</html>
