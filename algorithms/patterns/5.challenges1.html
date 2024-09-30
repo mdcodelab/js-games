@@ -148,6 +148,105 @@
 
         console.log("Is Subsequence?", isSubsequence('hello', 'hello world')); // true
 
+
+       // CHALLENGE 6 SLIDING WINDOW - maxSubarraySum
+//  //Given an array of integers and a number, write a function called maxSubarraySum, 
+//which finds the maximum sum of a subarray with the length of the number passed to the function.
+// [100, 200, 300] is a subarray of the original array, but [100, 300] is not.
+// maxSubarraySum([100,200,300,400], 2) // 700
+//maxSubarraySum([1,4,2,10,23,3,1,0,20], 4)  // 39 
+function maxSubarraySum(arr, num) {
+    if(arr.length <num) {
+        return null;
+    }
+
+let maxSum=0;
+let tempSum=0;
+for(let i=0;i<num; i++){
+maxSum += arr[i];
+}
+
+tempSum=maxSum;
+
+for(let i=num; i<arr.length; i++) {
+tempSum=tempSum-arr[i-num]+arr[i];
+maxSum =Math.max(maxSum, tempSum);
+}
+
+return maxSum;
+}
+
+console.log("Max Subarray Sum?", maxSubarraySum([100,200,300,400], 2)); // 700
+console.log("Max2", maxSubarraySum([1,4,2,10,23,3,1,0,20], 4)); //39 
+
+//method 2
+function maxSubarraySum2(arr, num) {
+    if(arr.length === 0) return null;
+
+    let tempSum=0;
+    let maxSum=0;
+
+    for(let i = 0; i<arr.length; i++) {
+        if(i<num) {
+            tempSum=tempSum + arr[i];
+            maxSum=tempSum;
+        } else {
+            tempSum = tempSum + arr[i] - arr[i-num];
+            maxSum=Math.max(maxSum, tempSum);
+        }
+    }
+    return maxSum;
+}
+
+console.log("Max Subarray Sum2?", maxSubarraySum2([100,200,300,400], 2)); // 700
+
+
+
+//CHALLENGE7 - Sliding Window - minSubArrayLen
+//Write a function called minSubArrayLen which accepts two parameters - an array of positive integers and a
+// positive integer.
+//This function should return the minimal length of a contiguous subarray of which the sum 
+//is greater than or equal to the integer passed to the function. If there isn't one, return 0 instead.
+//minSubArrayLen([2,3,1,2,4,3], 7) // 2 -> because [4,3] is the smallest subarray
+function minArrayLength(arr, num) {
+if(arr.length === 0) return 0;
+let minLength=Infinity; //minimum array length
+let sum =0;
+let left=0; //pointer pentru inceputul subarray-ului
+for(let right=0; right<arr.length; right++) {
+sum = sum + arr[right];
+while(sum >= num) {
+minLength=Math.min(minLength, (right-left+1));
+sum = sum -arr[left];
+left++;
+} 
+}
+return minLength === Infinity ? 0 : minLength
+}
+console.log("Min array length:", minArrayLength([2,3,1,2,4,3], 7)) //2
+
+
+//CHALLENGE 8 Sliding Window - findLongestSubstring
+// //Write a function called findLongestSubstring, which accepts a string and 
+//returns the length of the longest substring with all distinct characters.
+//indLongestSubstring('') // 0
+//findLongestSubstring('rithmschool') // 7
+function findLongestSubstring(str) {
+let start=0;
+let seen={};
+let maxLength=0;
+for(let i=0; i<str.length; i++) {
+let char=str[i];
+if(seen[char]>=start) {
+start=seen[char]+1;
+}
+seen[char]=i;
+maxLength=Math.max(maxLength, i-start+1);
+}
+return maxLength;
+}
+console.log("findLongestSubstring", findLongestSubstring("rithmschool")); //7
+
     </script>
 </body>
 </html>
