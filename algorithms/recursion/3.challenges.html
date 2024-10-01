@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //CHALLENGE 1
+        //Write a recursive function called reverse which accepts a string and returns
+        // a new string in reverse.
+        //method 1
+        function reverse (str) {
+        let myArr=str.split("").reverse().join("");
+        return myArr;
+        }
+        console.log(reverse("hello")); // ["o", "l", "l", "e", "h"]
+
+        //method 2
+        function reverse2 (str) {
+
+        }
+
+        //CHALLENGE 2
+        //Write a recursive function called isPalindrome which returns true/false
+        function isPalindrome (str1, str2) {
+            if(str1.length !== str2.length) return false;
+
+            let obj1={};
+            let obj2={};
+            for(let i=0; i<str1.length; i++) {
+                if(!obj1[str1[i]]) {
+                    obj1[str1[i]]=1;
+                } else {
+                    obj1[str1[i]]=obj1[str1[i]]+1;
+                }
+            }
+            for(let i=0; i< str2.length; i++) {
+                if(obj2[str2[i]]) {
+                    obj2[str2[i]]=obj2[str2[i]]+1;
+                } else {
+                    obj2[str2[i]]=1;
+                }
+            }
+            for(let key in obj1) {
+                if(obj1[key] !== obj2[key]) return false;
+            }
+            return true;
+        }
+
+        console.log(isPalindrome("racecar", "racecar")); // true
+
+
+        //CHALLENGE 3
+        //someRecursive which accepts an array and a callback. The function returns true 
+        //if a single value in the array returns true when passed to the callback. Otherwise it returns false.
+        function myFunc(arr, callback) {
+            for(i=0; i<arr.length; i++) {
+                if(callback(arr[i])) return true;
+            }
+            return true;
+        }
+        console.log(myFunc([1,2,3,4,5], function(num){return num % 2 === 0;})); // true
+
+
+        //CHALLENGE 4
+        //Write a recursive function called flatten which accepts an array of arrays 
+        //and returns a new array with all values flattened.
+        function flattened (arr) {
+        let result=[];
+        for(let i=0; i<arr.length; i++) {
+           if(Array.isArray(arr[i])) {
+            result=result.concat(flattened(arr[i]));
+           } else {
+            result.push(arr[i]);
+           }
+        }
+        return result;
+        }
+        console.log(flattened([1, 2, [5, 6, 9, [10, 11]]])); //[1, 2, 5, 6, 9, 10, 11
+
+        
+        //CHALLENGE 5
+        //capitalizeFirst
+    //Write a recursive function called capitalizeFirst. Given an array of strings,
+    //capitalize the first letter of each string in the array.
+    function capitalizeFirst (str) {
+        let myStr=str.map((item, index)=> {
+            return item.charAt(0).toUpperCase() + item.slice(1);
+        })
+        return myStr;
+    }
+    console.log(capitalizeFirst(["hello", "world", "this", "is", "a", "test"])); //["Hello", "World", "This", "Is", "A", "Test"]
+
+
+    //CHALLENGE 6
+    //Write a recursive function called nestedEvenSum. Return the sum
+    // of all even numbers in an object which may contain nested objects.
+    //for simple objects
+    function nestedEvenSum (obj) {
+        let sum=0;
+        for(let key in obj) {
+            if(obj[key] % 2 === 0) {
+                sum = sum + obj[key];
+            }
+        } 
+        return sum;
+    }
+    console.log("Even sum:", nestedEvenSum({a: 2, b: 3, c: 4})); //6
+
+//for complex objects
+function nestedEvenSum2(obj) {
+    let sum=0;
+    for(let key in obj){
+        let value=obj[key];
+        if(typeof value === "object") {
+            sum=sum+nestedEvenSum2(value);
+        } else if (typeof value === "number" && value % 2 === 0) {
+            sum=sum+value;
+        }
+    }
+    return sum;
+}
+    console.log("Even sum2:", nestedEvenSum2({a: 2, b: 3, c: 4, d: {e: 5, f: {g: 6, h: 7}}})); //12
+
+    //CHALLENGE 7
+    //stringifyNumbers
+//Write a function called stringifyNumbers which takes in an object and finds all of the values which 
+//are numbers and converts them to strings. Recursion would be a great way to solve this!
+//create a new object with the numbers converted to strings, and not modify the original. 
+//if we modify the original, simple objects
+function stringifyNumbers (obj) {
+for(key in obj) {
+    let value = obj[key];
+    if(typeof value === "number") {
+        value=value.toString();
+    }
+}
+return obj;
+}
+console.log(stringifyNumbers({a: 1, b: "2", c: 7}));
+
+///////for complex objects
+function stringifyNumbers2 (obj) {
+let newObj={};
+for(let key in obj) {
+    let value = obj[key];
+    //if the value is an object, apply recursive function
+    if(typeof value === "object") {
+        newObj[key]=stringifyNumbers2(value);
+    } else if (typeof value === "number") {
+        newObj[key]=value.toString();
+    }
+}
+return newObj;
+}
+console.log("stringify", stringifyNumbers2({a: 2, b: 3, c: 4, d: {e: 5, f: {g: 6, h: 7}}}));
+
+
+//CHALLENGE 8 - collectStrings
+//Write a function called collectStrings which accepts an object and 
+//returns an array of all the values in the object that have a typeof string
+function collectStrings(obj) {
+let arr=[];
+for(let key in obj) {
+    let value=obj[key];
+    if(typeof value === "object" && !Array.isArray(value)) {
+        arr=arr.concat(collectStrings(value));
+    } else if (typeof value === "string") {
+        arr.push(value);
+    }
+}
+return arr;
+}
+console.log(collectStrings({a: "hello", b: 2, c: "world", d: {e: "nested", f: 5}})); //["hello", "world", "nested"]
+
+
+
+
+    </script>
+</body>ue
+</html>
