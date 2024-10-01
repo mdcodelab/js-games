@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Write a function which accepts an array and a value.
+        // Loop through array and check if the current array element is equal to the value.
+        //If it is, return the index of that element. If the value is never found, return -1.
+        //methods used: indexOf, find, findIndex
+        function myFunc (arr, value) {
+            for(let i=0; i<arr.length; i++) {
+                if(arr[i] === value) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        console.log(myFunc([1, 2, 3, 4, 5], 3)); // Output: 2
+        //method2
+        function myFunc2 (arr, num) {
+            if(arr.includes(num)) {
+                return arr.indexOf(num);
+            }
+            return -1;
+        }
+        console.log(myFunc2([1, 2, 3, 4, 5], 3)); // Output: 2
+
+        //method 3
+        function myFunc3 (arr, num) {
+            let result=arr.find((item)=> item === num);
+            if(result) {
+                return arr.indexOf(num);
+            }
+            return -1;
+        }
+        console.log(myFunc3([1, 2, 3, 4, 5], 3)); // Output: 2
+
+    </script>
+</body>
+</html>
