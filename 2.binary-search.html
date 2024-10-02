@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //uses SORTED arrays
+        //eliminate half of the remaining elements at a time
+
+        //A function accepts a sorted array and a value
+        //Create a left pointer at the beginning of the array
+        //Create a right pointer at the end of the array
+        //While tle left comes before the right
+        //- if you find the pointer you want, return the index
+        //-if the pointer is too small, move the left pointer up, left=middle+1
+        //-if the pointer is too large, move the right pointer down, right=middle-1
+        //If you never find the value, return -1.
+
+        //Write a function called binarySearch which accepts a SORTED array
+        //and a value and returns the index at which the value exists. Otherwise, return -1.
+        function binarySearch(arr, num) {  //time complexity O(log n), space complexity O(1)
+            //indexes
+            let left=0;
+            let right=arr.length-1;
+            while(left<=right) {
+                middle=Math.floor((left+right)/2); //recalculate middle every time
+                if(arr[middle] === num) {
+                    return middle;
+                } else if(arr[middle] > num) {
+                    right=middle-1
+                } else {
+                    left=middle+1;
+                }
+                
+            }
+            return -1;
+            
+        }
+        
+
+        console.log("Binary search", binarySearch([1, 2, 3, 4, 5], 3)); // Output: 2
+        console.log("Binary search", binarySearch([1, 4, 6, 7, 9, 11, 12], 9)); //4
+
+    </script>
+</body>
+</html>
