@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //NAIVE APPROACH
+        //count how many times a substring appear in a longer string
+        //we search for pair of characters individually
+        //Is str2 in str1? steps:
+        //-Loop over the longest string
+        //-Loop over the shorter string
+        //-If the characters don't match, break down the inner loop
+        //-If the characters do match, keep going
+        //-If you complete the inner loop, and find a match, increment the count of matches
+        //-Return the count
+
+        function naiveSearch(long, short) {
+            let count=0;
+            for(let i=0; i<=long.length-short.length; i++) {
+                for(let j=0; j<short.length; j++) {
+                    if(long[i+j] !== short[j]) { 
+                        break;
+                    } else if (j === short.length-1) { 
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+
+        console.log(naiveSearch("Hello World", "lo")); // Output: 1
+
+        function myFunc(long, short) {
+            for(let i=0; i<long.length; i++) {
+                for(let j=0; j<short.length; j++) {
+                    console.log(long[i], short[j]);
+                }
+            }
+        }
+
+    myFunc("hello world", "lo");
+    </script>
+</body>
+</html>
