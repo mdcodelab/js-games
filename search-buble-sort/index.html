@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //works until nr. 10
+        let arr = [1, 9, 2, 3, -1];
+        let sortedArr=arr.sort();
+        console.log(sortedArr);
+
+        let myArr=[4, 59, 19, 10, 2];
+        let mySortedArr = myArr.sort((a, b)=> a-b);
+        console.log(mySortedArr);
+        let mySortArr=myArr.sort((a, b)=> b-a);
+        console.log(mySortArr);
+        console.log(myArr);
+        //maximum value
+        function bS(arr) {
+            let max=-Infinity;
+            for(let i=0; i<arr.length; i++) {
+                if(arr[i] > max) {
+                    max=arr[i];
+                }
+            }
+            return max;
+        }
+        console.log(bS([1, 9, 2, 3, -1]));
+
+        //unoptimized
+        function bubbleSort(arr) {
+            for(let i=0; i<arr.length; i++) {
+                for(let j=0; j<arr.length; j++) {
+                    console.log("Comp:", arr[j], arr[j+1]);
+                    if(arr[j]>arr[j+1]) {
+                        //swap
+                        let temp=arr[j];
+                        arr[j]=arr[j+1]
+                        arr[j+1]=temp;
+
+                    }
+                }
+            }
+            return arr;
+        }
+        bubbleSort([1, 9, 2, 3, -1]);
+
+        //optimized
+        function bubbleSort1(arr) {
+            for(let i=0; i<arr.length; i++) {
+                for (let j=0; j<arr.length -i - 1; j++) {
+                    console.log("Comparison:", arr, arr[j], arr[j+1])
+                    if(arr[j] > arr[j+1]) {
+                        let temp = arr[j];
+                        arr[j] = arr[j+1];
+                        arr[j+1] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+
+        console.log("Optimized", bubbleSort1([2, 8, 1, 7, 5]));
+
+        //
+        function bubbleSort2 (arr) {
+            for(let i=arr.length; i> 0; i--) {
+                for(let j=0; j<i-1; j++) {
+                    console.log(arr, arr[i], arr[j]);
+                    if(arr[j] > arr[j+1]) {
+                        let temp=arr[j];
+                        arr[j]=arr[j+1];
+                        arr[j+1]=temp;
+                    }
+                }
+            }
+            //return arr;
+        }
+        bubbleSort2([2, 8, 1, 7, 5]);
+    </script>
+</body>
+</html>
